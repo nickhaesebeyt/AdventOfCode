@@ -8,6 +8,5 @@ namespace AdventOfCode
         DateTime Date {get;}
         string Question { get; }
         string QuestionInterpretation { get; }
-        void Execute();
     }
 }
