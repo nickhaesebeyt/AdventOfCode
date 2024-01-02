@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            new _1_12_2023.SolutionInfo().Execute();
+            new _1_12_2023.Solution().Execute();
         }
     }
 }
