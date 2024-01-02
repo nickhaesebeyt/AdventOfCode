@@ -2,11 +2,12 @@ using System;
 
 namespace AdventOfCode
 {
-    public interface ISolutionInfo
+    public interface ISolution
     {
         string Name {get;} 
         DateTime Date {get;}
         string Question { get; }
         string QuestionInterpretation { get; }
+        void Execute();
     }
 }

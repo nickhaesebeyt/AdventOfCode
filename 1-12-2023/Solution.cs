@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdventOfCode._1_12_2023
 {
-    public class Solution:ISolutionInfo
+    public class Solution:ISolution
     {
         private List<string> case1 = new List<string>{"1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"};
         private List<string> case2 = new List<string>{"6etera6", "pra8ltor0", "melko98834pro98374l95lpp", "ol3pole", "ar0plr0", "pl8rdtped9087"};

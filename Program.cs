@@ -1,10 +1,11 @@
-﻿namespace AdventOfCode
+﻿using ToCheckExercise = AdventOfCode._1_12_2023;
+namespace AdventOfCode
 {
     class Program
     {
         static void Main(string[] args)
         {
-            new _1_12_2023.Solution().Execute();
+            new ToCheckExercise.Solution().Execute();
         }
     }
 }

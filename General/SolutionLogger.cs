@@ -4,18 +4,18 @@ namespace AdventOfCode
 {
     public static class SolutionLogger
     {
-        public static void LogTitle(ISolutionInfo solutionInfo, string format = "H1")
+        public static void LogTitle(ISolution solution, string format = "H1")
         {
-            Log($"{solutionInfo.Date:dd-MM-yyyy} ~ {solutionInfo.Name}", format);
+            Log($"{solution.Date:dd-MM-yyyy} ~ {solution.Name}", format);
         }
         
-        public static void LogAssignment(ISolutionInfo solutionInfo, string format = "H2")
+        public static void LogAssignment(ISolution solution, string format = "H2")
         {
             Log($"Assignment", format);
-            Log(solutionInfo.Question);
+            Log(solution.Question);
             
             Log($"Interpretation", format);
-            Log(solutionInfo.QuestionInterpretation);
+            Log(solution.QuestionInterpretation);
         }
 
         public static void LogStart(string format = "H2")
