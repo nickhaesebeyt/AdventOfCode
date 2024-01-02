@@ -35,20 +35,40 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(interpretationOfQuestion);
             SolutionLogger.Log("***");
             
-            SolutionLogger.Log($"*** Case 1 ***");
+            SolutionLogger.Log($"*** Case 1 Linq ***");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case1));
-            AnswerMeNow(case1, out Dictionary<string, int> case1Answers, out int totalValue);
+            AnswerMeNowWithLinq(case1, out Dictionary<string, int> case1Answers, out int totalValue);
             SolutionLogger.Log("Answer for each line:");
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
             SolutionLogger.Log(totalValue.ToString());
             SolutionLogger.Log("***");
             
-            SolutionLogger.Log($"*** Case 2 ***");
+            SolutionLogger.Log($"*** Case 2 Linq ***");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case2));
-            AnswerMeNow(case2, out case1Answers, out totalValue);
+            AnswerMeNowWithLinq(case2, out case1Answers, out totalValue);
+            SolutionLogger.Log("Answer for each line:");
+            SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
+            SolutionLogger.Log("Total value:");
+            SolutionLogger.Log(totalValue.ToString());
+            SolutionLogger.Log("***");
+            
+            SolutionLogger.Log($"*** Case 1 w/o Linq ***");
+            SolutionLogger.Log("Answer for the following:");
+            SolutionLogger.Log(string.Join("\n", case1));
+            AnswerMeNowWithoutLinq(case1, out case1Answers, out totalValue);
+            SolutionLogger.Log("Answer for each line:");
+            SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
+            SolutionLogger.Log("Total value:");
+            SolutionLogger.Log(totalValue.ToString());
+            SolutionLogger.Log("***");
+            
+            SolutionLogger.Log($"*** Case 2 w/o Linq ***");
+            SolutionLogger.Log("Answer for the following:");
+            SolutionLogger.Log(string.Join("\n", case2));
+            AnswerMeNowWithoutLinq(case2, out case1Answers, out totalValue);
             SolutionLogger.Log("Answer for each line:");
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
@@ -56,18 +76,69 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log("***");
         }
 
-        private static void AnswerMeNow(List<string> case1, out Dictionary<string, int> case1Answers, out int totalAnswer)
+        private static void AnswerMeNowWithLinq(List<string> case1, out Dictionary<string, int> case1Answers, out int totalAnswer)
         {
             case1Answers = new Dictionary<string, int>();
             totalAnswer = 0;
             foreach (string s in case1)
             {
+                if (!s.Any(char.IsDigit))
+                {
+                    case1Answers.Add(s, 0);
+                    continue;
+                }
+                
                 string copy = s.Replace(".", string.Empty);
                 copy = copy.Replace(",", string.Empty);
 
                 char[] substr = copy.Where(char.IsDigit).ToArray();
                 char first = substr.First();
                 char last = substr.Last();
+                string doubleDigitString = new string(new[] { first, last });
+                int value = int.Parse(doubleDigitString);
+                case1Answers.Add(s, value);
+                totalAnswer += value;
+            }
+        }
+        
+        private static void AnswerMeNowWithoutLinq(List<string> case1, out Dictionary<string, int> case1Answers, out int totalAnswer)
+        {
+            case1Answers = new Dictionary<string, int>();
+            totalAnswer = 0;
+            foreach (string s in case1)
+            {
+                char first = '/';
+                for (int i = 0; i < s.Length; i++)
+                {
+                    char c = s[i];
+                    if (!char.IsDigit(c)) 
+                        continue;
+                    
+                    first = c;
+                    break;
+                }
+
+                if (first == '/')
+                {
+                    first = '0';
+                }
+
+                char last = '/';
+                for (int i = s.Length - 1; i >= 0; i--)
+                {
+                    char c = s[i];
+                    if (!char.IsDigit(c)) 
+                        continue;
+                    
+                    last = c;
+                    break;
+                }
+
+                if (last == '/')
+                {
+                    last = first;
+                }
+    
                 string doubleDigitString = new string(new[] { first, last });
                 int value = int.Parse(doubleDigitString);
                 case1Answers.Add(s, value);
