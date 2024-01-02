@@ -6,24 +6,20 @@ using System.Text;
 
 namespace AdventOfCode._1_12_2023
 {
-    public class SolutionInfo:ISolutionInfo, IQuestionInfo
+    public class SolutionInfo:ISolutionInfo
     {
         private List<string> case1 = new List<string>{"1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"};
         private List<string> case2 = new List<string>{"6etera6", "pra8ltor0", "melko98834pro98374l95lpp", "ol3pole", "ar0plr0", "pl8rdtped9087"};
         
         public void Execute()
         {
-            SolutionLogger.Intro(this);
+            SolutionLogger.LogTitle(this);
+            SolutionLogger.LogAssignment(this);
             
-            SolutionLogger.Log($"Assignment", "H2");
-            SolutionLogger.Log(Question);
             SolutionLogger.NewLine();
+            SolutionLogger.LogStart();
             
-            SolutionLogger.Log($"Interpretation", "H2");
-            SolutionLogger.Log(QuestionInterpretation);
-            SolutionLogger.NewLine();
-            
-            SolutionLogger.Log($"Case 1 Linq", "H2");
+            SolutionLogger.Log($"Case 1 Linq", "H3");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case1));
             AnswerMeNowWithLinq(case1, out Dictionary<string, int> case1Answers, out int totalValue);
@@ -33,7 +29,7 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(totalValue.ToString());
             SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"Case 2 Linq", "H2");
+            SolutionLogger.Log($"Case 2 Linq", "H3");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case2));
             AnswerMeNowWithLinq(case2, out case1Answers, out totalValue);
@@ -43,7 +39,7 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(totalValue.ToString());
             SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"Case 1 w/o Linq", "H2");
+            SolutionLogger.Log($"Case 1 w/o Linq", "H3");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case1));
             AnswerMeNowWithoutLinq(case1, out case1Answers, out totalValue);
@@ -53,7 +49,7 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(totalValue.ToString());
             SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"Case 2 w/o Linq", "H2");
+            SolutionLogger.Log($"Case 2 w/o Linq", "H3");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case2));
             AnswerMeNowWithoutLinq(case2, out case1Answers, out totalValue);
