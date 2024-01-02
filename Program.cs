@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace AdventOfCode
+﻿namespace AdventOfCode
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new _1_12_2023.SolutionInfo().Execute();
         }
     }
 }
