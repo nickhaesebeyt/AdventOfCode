@@ -4,8 +4,8 @@ namespace AdventOfCode._2_12_2023
 {
     public class Solution : ISolution
     {
-        public string Name { get; }
-        public DateTime Date { get; }
+        public string Name => "Cube Conundrum";
+        public DateTime Date => new DateTime(2023, 12, 2);
         public string Question { get; }
         public string QuestionInterpretation { get; }
         

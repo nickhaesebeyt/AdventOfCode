@@ -130,7 +130,7 @@ namespace AdventOfCode._1_12_2023
             }
         }
 
-        public string Name => "CalibrationChecker";
+        public string Name => "Trebuchet?!";
         public DateTime Date => new DateTime(2023, 12, 1);
         
         public string Question => "The newly-improved calibration document consists of lines of text; each line originally contained a specific calibration value that the Elves now need to recover. On each line, the calibration value can be found by combining the first digit and the last digit (in that order) to form a single two-digit number.\n\nFor example:\n\n1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet\nIn this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.\n\nConsider your entire calibration document. What is the sum of all of the calibration values?";

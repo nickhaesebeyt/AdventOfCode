@@ -1,4 +1,4 @@
-﻿using ToCheckExercise = AdventOfCode._1_12_2023;
+﻿using ToCheckExercise = AdventOfCode._2_12_2023;
 namespace AdventOfCode
 {
     class Program
