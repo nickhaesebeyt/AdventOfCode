@@ -6,20 +6,8 @@ using System.Text;
 
 namespace AdventOfCode._1_12_2023
 {
-    public class SolutionInfo:ISolutionInfo
+    public class SolutionInfo:ISolutionInfo, IQuestionInfo
     {
-        private string assignment = "The newly-improved calibration document consists of lines of text; each line originally contained a specific calibration value that the Elves now need to recover. On each line, the calibration value can be found by combining the first digit and the last digit (in that order) to form a single two-digit number.\n\nFor example:\n\n1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet\nIn this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.\n\nConsider your entire calibration document. What is the sum of all of the calibration values?";
-        private string interpretationOfQuestion = "From a line of string, create a 2 digit number, combining 1st and last digit. If there is only 1 digit, than make a double digit number from that one (e.g. '7' is '77'). Return the sum of all 2 digit numbers for all the lines.";
-        
-        private Dictionary<string, int> exampleInput = new Dictionary<string, int>
-        {
-            {"1abc2", 12},
-            {"pqr3stu8vwx",38},
-            {"a1b2c3d4e5f",15},
-            {"treb7uchet",77}
-        };
-        private int exampleAnswer = 142;
-
         private List<string> case1 = new List<string>{"1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"};
         private List<string> case2 = new List<string>{"6etera6", "pra8ltor0", "melko98834pro98374l95lpp", "ol3pole", "ar0plr0", "pl8rdtped9087"};
         
@@ -27,15 +15,15 @@ namespace AdventOfCode._1_12_2023
         {
             SolutionLogger.Intro(this);
             
-            SolutionLogger.Log($"*** Assignment ***");
-            SolutionLogger.Log(assignment);
-            SolutionLogger.Log("***");
+            SolutionLogger.Log($"Assignment", "H2");
+            SolutionLogger.Log(Question);
+            SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"*** Interpretation ***");
-            SolutionLogger.Log(interpretationOfQuestion);
-            SolutionLogger.Log("***");
+            SolutionLogger.Log($"Interpretation", "H2");
+            SolutionLogger.Log(QuestionInterpretation);
+            SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"*** Case 1 Linq ***");
+            SolutionLogger.Log($"Case 1 Linq", "H2");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case1));
             AnswerMeNowWithLinq(case1, out Dictionary<string, int> case1Answers, out int totalValue);
@@ -43,9 +31,9 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
             SolutionLogger.Log(totalValue.ToString());
-            SolutionLogger.Log("***");
+            SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"*** Case 2 Linq ***");
+            SolutionLogger.Log($"Case 2 Linq", "H2");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case2));
             AnswerMeNowWithLinq(case2, out case1Answers, out totalValue);
@@ -53,9 +41,9 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
             SolutionLogger.Log(totalValue.ToString());
-            SolutionLogger.Log("***");
+            SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"*** Case 1 w/o Linq ***");
+            SolutionLogger.Log($"Case 1 w/o Linq", "H2");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case1));
             AnswerMeNowWithoutLinq(case1, out case1Answers, out totalValue);
@@ -63,9 +51,9 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
             SolutionLogger.Log(totalValue.ToString());
-            SolutionLogger.Log("***");
+            SolutionLogger.NewLine();
             
-            SolutionLogger.Log($"*** Case 2 w/o Linq ***");
+            SolutionLogger.Log($"Case 2 w/o Linq", "H2");
             SolutionLogger.Log("Answer for the following:");
             SolutionLogger.Log(string.Join("\n", case2));
             AnswerMeNowWithoutLinq(case2, out case1Answers, out totalValue);
@@ -73,7 +61,7 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(string.Join("\n", case1Answers.Select(a=>$"{a.Key} = {a.Value}")));
             SolutionLogger.Log("Total value:");
             SolutionLogger.Log(totalValue.ToString());
-            SolutionLogger.Log("***");
+            SolutionLogger.NewLine();
         }
 
         private static void AnswerMeNowWithLinq(List<string> case1, out Dictionary<string, int> case1Answers, out int totalAnswer)
@@ -148,5 +136,8 @@ namespace AdventOfCode._1_12_2023
 
         public string Name => "CalibrationChecker";
         public DateTime Date => new DateTime(2023, 12, 1);
+        
+        public string Question => "The newly-improved calibration document consists of lines of text; each line originally contained a specific calibration value that the Elves now need to recover. On each line, the calibration value can be found by combining the first digit and the last digit (in that order) to form a single two-digit number.\n\nFor example:\n\n1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet\nIn this example, the calibration values of these four lines are 12, 38, 15, and 77. Adding these together produces 142.\n\nConsider your entire calibration document. What is the sum of all of the calibration values?";
+        public string QuestionInterpretation => "From a line of string, create a 2 digit number, combining 1st and last digit. If there is only 1 digit, than make a double digit number from that one (e.g. '7' is '77'). Return the sum of all 2 digit numbers for all the lines.";
     }
 }

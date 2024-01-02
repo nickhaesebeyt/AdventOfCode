@@ -7,4 +7,10 @@ namespace AdventOfCode
         string Name {get;} 
         DateTime Date {get;}
     }
+
+    public interface IQuestionInfo
+    {
+        string Question { get; }
+        string QuestionInterpretation { get; }
+    }
 }
