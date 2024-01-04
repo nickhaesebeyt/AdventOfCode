@@ -66,17 +66,34 @@ namespace AdventOfCode._1_12_2023
             SolutionLogger.Log(totalValue.ToString());
             SolutionLogger.NewLine();
 
-            SolutionLogger.Log($"Case 4 w/o Linq", "H3");
-            SolutionLogger.Log("Answer for the following:");
-            stringList = "two1nine\neightwothree\nabcone2threexyz\nxtwone3four\n4nineeightseven2\nzoneight234\n7pqrstsixteen".Split(new[] { "\n" }, StringSplitOptions.None).ToList();
+            int counter = 0;
+            foreach (var line in stringList)
+            {
+                var cleanLine = line
+                    .Replace("one", "o1e")
+                    .Replace("two", "t2o")
+                    .Replace("three", "t3e")
+                    .Replace("four", "f4r")
+                    .Replace("five", "f5e")
+                    .Replace("six", "s6x")
+                    .Replace("seven", "s7n")
+                    .Replace("eight", "e8t")
+                    .Replace("nine", "n9e");
+    
+                // Get the first number from the line
+                var firstNumber = cleanLine.First(Char.IsDigit);
+    
+                // Get the Second Number
+                var lastNumber = cleanLine.Last(Char.IsDigit);
+    
+                // Concat the first number with the second number
+                var combinedNumber = firstNumber.ToString() + lastNumber.ToString();
+    
+                // Convert the combined numbers to an int and add it to the counter
+                counter += int.Parse(combinedNumber);
+            }
 
-            SolutionLogger.Log(string.Join("\n", stringList));
-            AnswerMeNowWithoutLinq(stringList, out case1Answers, out totalValue);
-            SolutionLogger.Log("Answer for each line:");
-            SolutionLogger.Log(string.Join("\n", case1Answers.Select(a => $"{a.Key} = {a.Value}")));
-            SolutionLogger.Log("Total value:");
-            SolutionLogger.Log(totalValue.ToString());
-            SolutionLogger.NewLine();
+            SolutionLogger.Log(counter.ToString());
         }
 
         private static void AnswerMeNowWithoutLinq(List<string> case1, out Dictionary<string, int> case1Answers, out int totalAnswer)
